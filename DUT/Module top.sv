@@ -100,23 +100,7 @@ module Module_top(ACLK,
     output logic [1:0]   BRESP;
     output logic [7:0]   BID;
     
-//    // APB slave0 - 8bit
-//    output logic                     PSEL_0;
-//    output logic [DATA_WIDTH -1:0]   PRDATA_0;
-//    output logic                     PREADY_0;
-//    output logic                     PSLVERR_0;
-    
-//    // APB slave1 - 16bit
-//    output logic                     PSEL_1;
-//    output logic [DATA_WIDTH -1:0]   PRDATA_1;
-//    output logic                     PREADY_1;
-//    output logic                     PSLVERR_1;
-    
-//    // APB slave2 - 32bit
-//    output logic                     PSEL_2;
-//    output logic [DATA_WIDTH -1:0]   PRDATA_2;
-//    output logic                     PREADY_2;
-//    output logic                     PSLVERR_2;
+
     // COMMON WIRE
     output logic                     PWRITE;
     output logic                     PENABLE;
