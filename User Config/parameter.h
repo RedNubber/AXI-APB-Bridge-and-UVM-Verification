@@ -46,7 +46,7 @@
                     `elsif AXI_MEM_SIZE_32_BIT
                         parameter config_addr = 32'h0000_3004;                  //ADDRESS FOR SLAVE 3
                     `elsif apb_reg
-                        parameter config_addr = 32'h0000_0014;                  //ADDRESS FOR SLAVE 3
+                        parameter config_addr = 32'h0000_0014;                  //ADDRESS FOR APB REGISTER
                     `endif
                         /*0000_1000 to 0000_1FFF for SLAVE 8  BIT*/
                         /*0000_2000 to 0000_2FFF for SLAVE 16 BIT*/
