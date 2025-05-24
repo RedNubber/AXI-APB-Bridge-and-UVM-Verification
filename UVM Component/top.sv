@@ -78,10 +78,9 @@ module tb2();
     test t;
     top_if vif();
     
-    //logic [SLAVE_NUM-1:0][31:0] prdata;
-    //logic [3:0] pready;
+    
     logic bready;
-    //logic [3:0] pslverr;
+    
     
     string current_test_name;
     string waveform_path;
@@ -90,8 +89,7 @@ module tb2();
     
     initial begin
         vif.aclk = 0;
-        //#10;
-        //forever #5 vif.aclk = ~vif.aclk;
+        
         `ifdef 250_MHz
             forever #2 vif.aclk = ~vif.aclk;
         `elsif 200_MHz
@@ -103,8 +101,7 @@ module tb2();
     
     initial begin
         vif.pclk = 0;
-        //#10;
-        //forever #50 vif.pclk = ~vif.pclk;
+        
         `ifdef 25_MHz
             forever #20 vif.pclk = ~vif.pclk;
         `elsif 20_MHz
@@ -116,15 +113,7 @@ module tb2();
     initial begin
         
         vif.aresetn = 0;
-        #1;
-//        `ifdef 250_25_MHz
-//            #5;
-//        `elsif 200_20_MHz
-//            #5;
-//        `elsif 100_10 MHz
-//            #10;
-//        `endif
-        
+        #1;        
         vif.aresetn = 1;
 
         
@@ -170,16 +159,15 @@ module tb2();
         .BRESP(vif.bresp),
         .BID(vif.bid),
         .PCLK(vif.pclk),
-        //.PRESET_N(vif.aresetn),
-        .PREADY(),
+        .PREADY(vif.pready),
         .PRDATA(vif.prdata),
-        .PSLVERR(),
+        .PSLVERR(pslverr),
         .PADDR(vif.paddr),
         .PWDATA(vif.pwdata),
         .PSEL(vif.psel),
         .PENABLE(vif.penable),
-        .PPROT(),
-        .PSTRB(),
+        .PPROT(vif.pprot),
+        .PSTRB(vif.pstrb),
         .PWRITE(vif.pwrite)
     );
     
@@ -195,4 +183,4 @@ module tb2();
     
 endmodule
 
-//end
+
