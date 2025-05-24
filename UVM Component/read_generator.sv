@@ -26,57 +26,57 @@ class generator_read extends uvm_sequence #(transaction);
             t = transaction::type_id::create("t");
             
             start_item(t);
-                // Thiết lập các tham số cho read
+                
                 t.arvalid = 1'b1;
-                t.araddr  = config_addr;  // Địa chỉ đọc
-                t.arsize  = burst_size;         // 4 bytes (32-bit)
-                t.arlen   = length;              // Burst length 4
-                t.arburst = burst_type;          // INCR burst
-                t.arid    = 8'h12;          // ID của transaction
-                t.arprot  = 3'b000;         // Normal non-secure access
-                t.rready  = 1'b1;           // Sẵn sàng nhận dữ liệu
+                t.araddr  = config_addr;  
+                t.arsize  = burst_size;         
+                t.arlen   = length;              
+                t.arburst = burst_type;          
+                t.arid    = 8'h12;          
+                t.arprot  = 3'b000;         
+                t.rready  = 1'b1;           
             finish_item(t);
          `elsif AXI_MEM_SIZE_16_BIT
             t = transaction::type_id::create("t");
             
             start_item(t);
-                // Thiết lập các tham số cho read
+               
                 t.arvalid = 1'b1;
-                t.araddr  = config_addr;  // Địa chỉ đọc
-                t.arsize  = burst_size;         // 4 bytes (32-bit)
-                t.arlen   = length;              // Burst length 4
-                t.arburst = burst_type;          // INCR burst
-                t.arid    = 8'h12;          // ID của transaction
-                t.arprot  = 3'b000;         // Normal non-secure access
-                t.rready  = 1'b1;           // Sẵn sàng nhận dữ liệu
+                t.araddr  = config_addr;  
+                t.arsize  = burst_size;        
+                t.arlen   = length;              
+                t.arburst = burst_type;          
+                t.arid    = 8'h12;          
+                t.arprot  = 3'b000;         
+                t.rready  = 1'b1;           
             finish_item(t);
          `elsif AXI_MEM_SIZE_32_BIT
             t = transaction::type_id::create("t");
             
             start_item(t);
-                // Thiết lập các tham số cho read
+                
                 t.arvalid = 1'b1;
-                t.araddr  = config_addr;  // Địa chỉ đọc
-                t.arsize  = burst_size;         // 4 bytes (32-bit)
-                t.arlen   = length;              // Burst length 4
-                t.arburst = burst_type;          // INCR burst
-                t.arid    = 8'h12;          // ID của transaction
-                t.arprot  = 3'b000;         // Normal non-secure access
-                t.rready  = 1'b1;           // Sẵn sàng nhận dữ liệu
+                t.araddr  = config_addr;  
+                t.arsize  = burst_size;         
+                t.arlen   = length;              
+                t.arburst = burst_type;          
+                t.arid    = 8'h12;          
+                t.arprot  = 3'b000;         
+                t.rready  = 1'b1;           
             finish_item(t);
          `elsif apb_reg
             t = transaction::type_id::create("t");
             
             start_item(t);
-                // Thiết lập các tham số cho read
+                
                 t.arvalid = 1'b1;
-                t.araddr  = config_addr;  // Địa chỉ đọc
-                t.arsize  = burst_size;         // 4 bytes (32-bit)
-                t.arlen   = length;              // Burst length 4
-                t.arburst = burst_type;          // INCR burst
-                t.arid    = 8'h12;          // ID của transaction
-                t.arprot  = 3'b000;         // Normal non-secure access
-                t.rready  = 1'b1;           // Sẵn sàng nhận dữ liệu
+                t.araddr  = config_addr;  
+                t.arsize  = burst_size;         
+                t.arlen   = length;              
+                t.arburst = burst_type;         
+                t.arid    = 8'h12;         
+                t.arprot  = 3'b000;         
+                t.rready  = 1'b1;           
             finish_item(t);
          `endif
     endtask
