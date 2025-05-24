@@ -5,14 +5,14 @@
 //=================================================================//
 `ifndef para_config
 `define para_config
-//================      Define apb_reg when you want to check APB Register     ==========//
-    //`define apb_reg
-    `ifdef apb_reg
-        parameter config_addr = 32'h0000_0014;
-        `define FIXED
-        `define LENGTH_8
-        `define BURST_SIZE_32
-    `else
+
+//`define apb_reg
+`ifdef apb_reg
+    parameter config_addr = 32'h0000_0014;
+    `define FIXED
+    `define LENGTH_8
+    `define BURST_SIZE_32
+`else
 
 
 
@@ -93,10 +93,14 @@
 
 
 //================     Step6: CHOOSE FREQUENT     =================//
-                            `define 250_25_MHz
-                            //`define 200_20_MHz
-                            //`define 100_10 MHz
-
+//================              For AXI           =================//
+                            `define 250_MHz
+                            //`define 200_MHz
+                            //`define 100_MHz
+//================              For APB           =================//
+                            //`define 25_MHz
+                            `define 20_MHz
+                            //`define 10_MHz
 
 
 
