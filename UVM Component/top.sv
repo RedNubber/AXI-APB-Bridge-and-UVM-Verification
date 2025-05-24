@@ -4,6 +4,9 @@ import uvm_pkg::*;
 `include "parameter.h"
 
 
+
+
+
 //=====================================================================================//
 //==========================            Interface           ===========================//
 //=====================================================================================//
@@ -74,32 +77,57 @@ module tb2();
  
     test t;
     top_if vif();
+    
+    //logic [SLAVE_NUM-1:0][31:0] prdata;
+    //logic [3:0] pready;
     logic bready;
+    //logic [3:0] pslverr;
+    
+    string current_test_name;
+    string waveform_path;
+
+      
+    
     initial begin
         vif.aclk = 0;
-        `ifdef 250_25_MHz
+        //#10;
+        //forever #5 vif.aclk = ~vif.aclk;
+        `ifdef 250_MHz
             forever #2 vif.aclk = ~vif.aclk;
-        `elsif 200_20_MHz
+        `elsif 200_MHz
             forever #2.5 vif.aclk = ~vif.aclk;
-        `elsif 100_10 MHz
+        `elsif 100_MHz
             forever #5 vif.aclk = ~vif.aclk;
         `endif
     end
     
     initial begin
         vif.pclk = 0;
-        `ifdef 250_25_MHz
+        //#10;
+        //forever #50 vif.pclk = ~vif.pclk;
+        `ifdef 25_MHz
             forever #20 vif.pclk = ~vif.pclk;
-        `elsif 200_20_MHz
+        `elsif 20_MHz
             forever #25 vif.pclk = ~vif.pclk;
-        `elsif 100_10 MHz
+        `elsif 10_MHz
             forever #50 vif.pclk = ~vif.pclk;
         `endif
     end
     initial begin
+        
         vif.aresetn = 0;
-        #1;        
-        vif.aresetn = 1; 
+        #1;
+//        `ifdef 250_25_MHz
+//            #5;
+//        `elsif 200_20_MHz
+//            #5;
+//        `elsif 100_10 MHz
+//            #10;
+//        `endif
+        
+        vif.aresetn = 1;
+
+        
     end
     
     initial begin
@@ -143,15 +171,15 @@ module tb2();
         .BID(vif.bid),
         .PCLK(vif.pclk),
         //.PRESET_N(vif.aresetn),
-        .PREADY(vif.pready),
+        .PREADY(),
         .PRDATA(vif.prdata),
-        .PSLVERR(vif.pslverr),
+        .PSLVERR(),
         .PADDR(vif.paddr),
         .PWDATA(vif.pwdata),
         .PSEL(vif.psel),
         .PENABLE(vif.penable),
-        .PPROT(vif.pprot),
-        .PSTRB(vif.pstrb),
+        .PPROT(),
+        .PSTRB(),
         .PWRITE(vif.pwrite)
     );
     
