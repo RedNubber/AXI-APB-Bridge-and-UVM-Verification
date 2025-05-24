@@ -14,7 +14,7 @@ interface top_if();
     logic                    aclk;
     logic                    pclk;
     logic                    aresetn;
-    //logic                    preset_n;
+    
     
     //Aw signal
     logic                    awvalid;
@@ -80,12 +80,7 @@ module tb2();
     
     
     logic bready;
-    
-    
-    string current_test_name;
-    string waveform_path;
-
-      
+        
     
     initial begin
         vif.aclk = 0;
