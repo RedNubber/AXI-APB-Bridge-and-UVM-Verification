@@ -5,14 +5,14 @@
 //=================================================================//
 `ifndef para_config
 `define para_config
-
-`define apb_reg
-`ifdef apb_reg
-    parameter config_addr = 32'h0000_0014;
-    `define FIXED
-    `define LENGTH_8
-    `define BURST_SIZE_32
-`else
+//================      Define apb_reg when you want to check APB Register     ==========//
+    //`define apb_reg
+    `ifdef apb_reg
+        parameter config_addr = 32'h0000_0014;
+        `define FIXED
+        `define LENGTH_8
+        `define BURST_SIZE_32
+    `else
 
 
 
