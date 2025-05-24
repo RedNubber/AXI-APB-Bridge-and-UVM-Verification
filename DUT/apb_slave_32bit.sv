@@ -15,7 +15,7 @@ module apb_slave_32bit(
     output logic PREADY,             // APB ready signal
     output logic PSLVERR             // APB slave error
     );
-    parameter MEM_DEPTH = 1024;       // Memory depth
+    parameter MEM_DEPTH = 4096;       // Memory depth
     parameter ADDR_WIDTH = 32;     // Address width
     parameter DATA_WIDTH = 32;      // Data width
     parameter MEM_BIT_SIZE = 32;
