@@ -59,18 +59,17 @@ class driver extends uvm_driver#(transaction);
     
     task drive_write_transaction(transaction t);
         fork
-        begin
-        @(posedge vif.aclk);
-        vif.wvalid <= 1;
-        end
-        vif.awvalid <= 1;
-        
-        vif.awaddr <= t.awaddr;
-        vif.awsize <= t.awsize;
-        vif.awlen <= t.awlen;
-        vif.awburst <= t.awburst;
-        vif.awid <= t.awid;
-        vif.awprot <= t.awprot;
+            begin
+                @(posedge vif.aclk);
+                vif.wvalid <= 1;
+            end
+            vif.awvalid <= 1;
+            vif.awaddr <= t.awaddr;
+            vif.awsize <= t.awsize;
+            vif.awlen <= t.awlen;
+            vif.awburst <= t.awburst;
+            vif.awid <= t.awid;
+            vif.awprot <= t.awprot;
             for (int i = 0; i <= t.awlen; i++) begin
                 @(posedge vif.aclk iff vif.wready); 
                 vif.wdata = t.wdata[i];
@@ -79,22 +78,16 @@ class driver extends uvm_driver#(transaction);
                 t.pwrite = vif.pwrite;
                 #0.5;
                 t.wvalid = vif.wvalid;
-                
-                
-                item_collected_port.write(t);
-                
+                item_collected_port.write(t);  
             end
             begin
                 @(posedge vif.aclk iff (vif.awready && vif.wready));
                 #1;
                 vif.awvalid <= 0;
-                
             end
         join
         @(posedge vif.aclk);
         vif.wvalid <= 0;
-        
-        
     endtask
     
     task drive_read_transaction(transaction t);
